@@ -1,0 +1,52 @@
+{
+  "lookbackDays": 90,
+  "weights": {
+    "specialLivery": 40,
+    "rareModelGlobal": 30,
+    "rareAtAirport": 20,
+    "firstTimeHere": 20,
+    "unusualRoute": 15
+  },
+  "thresholds": {
+    "exceptional": 50,
+    "notable": 20,
+    "unusualRouteMaxCount": 2
+  },
+  "special_livery_keywords": [
+    "retro",
+    "skyteam",
+    "oneworld",
+    "star alliance",
+    "expo",
+    "olympic",
+    "100th",
+    "centenary",
+    "centennial",
+    "special",
+    "panda"
+  ],
+  "rare_models_global": [
+    "B748",
+    "A35K",
+    "A345",
+    "MD11",
+    "A318"
+  ],
+  "rare_models_by_airport": {
+    "CDG": [
+      "E170",
+      "B734"
+    ]
+  },
+  "rare_airlines_by_airport": {
+    "CDG": [
+      "QF",
+      "NZ"
+    ]
+  },
+  "special_registrations": {
+    "F-RARE": [
+      "Test special registration example"
+    ]
+  }
+}

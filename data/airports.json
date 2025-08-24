@@ -1,0 +1,42 @@
+[
+  {
+    "iata": "CDG",
+    "icao": "LFPG",
+    "name": "Paris Charles de Gaulle",
+    "city": "Paris",
+    "country": "France",
+    "timezone": "Europe/Paris",
+    "lat": 49.0097,
+    "lon": 2.5479
+  },
+  {
+    "iata": "CPH",
+    "icao": "EKCH",
+    "name": "Copenhagen Kastrup",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "timezone": "Europe/Copenhagen",
+    "lat": 55.6181,
+    "lon": 12.6561
+  },
+  {
+    "iata": "IBZ",
+    "icao": "LEIB",
+    "name": "Ibiza Airport",
+    "city": "Ibiza",
+    "country": "Spain",
+    "timezone": "Europe/Madrid",
+    "lat": 38.8729,
+    "lon": 1.3731
+  },
+  {
+    "iata": "CAY",
+    "icao": "SOCA",
+    "name": "Cayenne F\u00e9lix Ebou\u00e9",
+    "city": "Cayenne",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "lat": 4.8198,
+    "lon": -52.3604
+  }
+]

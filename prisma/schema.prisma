@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Airport {
+  iata     String  @id
+  icao     String?
+  name     String?
+  city     String?
+  country  String?
+  timezone String
+  lat      Float?
+  lon      Float?
+
+  @@index([icao])
+  @@index([city])
+}
+
+model Movement {
+  id                  String   @id @default(cuid())
+  airport             String
+  direction           String   // 'arrivals' | 'departures'
+  extractedAtUtc      DateTime
+  dedupeKey           String   @unique
+
+  airline             String?
+  owner               String?
+  registration        String
+  modelCode           String?
+  modelText           String?
+  originCode          String?
+  originName          String?
+  destinationCode     String?
+  destinationName     String?
+  liveryInfo          String?
+
+  // New optional schedule/actual fields (UTC)
+  scheduledDepartureUtc DateTime?
+  scheduledArrivalUtc   DateTime?
+  actualDepartureUtc    DateTime?
+  actualArrivalUtc      DateTime?
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  score               SpotterScore?
+
+  @@index([airport, direction, extractedAtUtc])
+  @@index([airport, registration])
+  @@index([airport, originCode, destinationCode])
+  @@index([scheduledDepartureUtc])
+  @@index([scheduledArrivalUtc])
+  @@index([actualDepartureUtc])
+  @@index([actualArrivalUtc])
+}
+
+model SpotterScore {
+  id          String   @id @default(cuid())
+  movementId  String   @unique
+  score       Int
+  label       String   // 'exceptional' | 'notable' | 'normal'
+  reasons     String   // JSON string
+  ruleHits    String   // JSON string
+  computedAt  DateTime @default(now())
+
+  movement    Movement @relation(fields: [movementId], references: [id], onDelete: Cascade)
+}
+
+model RulePack {
+  id         String   @id @default(cuid())
+  version    Int
+  active     Boolean  @default(true)
+  content    String   // JSON string
+  createdAt  DateTime @default(now())
+
+  @@index([active])
+  @@unique([version])
+}
